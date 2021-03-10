@@ -7,5 +7,7 @@
 			"path": "..\\..\\uw-sea-fsf-pt-09-2020-u-c\\11-express\\01-Activities"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
 }

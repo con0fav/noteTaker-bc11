@@ -1,33 +1,30 @@
 var notes = require("../db/db.json");
+var fs = require("fs");
+
 
 module.exports = function(app) {
 
   app.get("/api/notes", function(req, res) {
+    
     res.json(notes);
-
     //fs module to read file
-    //parse file contents with JSON.parse() 
+    
+    //parse file contents with JSON.parse()
+
     //send parsed data back to client with res.json()
-  });
-
-  app.get("/api/notes:id", function(req, res) {
-    var id = req.params.id;
-
-    for (let i = 0; i < notes.length; i++) {
-      if (id === notes[i].routeName) {
-        return res.json(notes[i]);
-      }
-    }
-    return res.json(false);
   });
 
   app.post("/api/notes", function(req, res) {
     var newNote = req.body;
 
-    console.log(newNote);
+    console.log(req.body);
+    
+    newNote.id = Date.now();
 
     notes.push(newNote);
-
+    console.log(newNote)
+    //use Date.Now to create timestamp for id
+    res.json(newNote);
     //access posted data in req.body
     //fs module to read file
     //parse file contents with JSON.parse()
@@ -37,21 +34,26 @@ module.exports = function(app) {
 
   });
 
-  // ---------------------------------------------------------------------------
-  // delete route goes here
-
   app.delete("/api/notes/:id", function(req, res) {
-    //access :id from req.params.id
-    //fs module to read file
-    //parse file contents with JSON.parse() 
     
-    //find the matching index using .findIndex()
-    //remove target element using splice() method
-    //or
-    //use the Array.filter() method to filter out matching element
-    //ex: myArray =myArray.filter( element => element.id !== req.params.id);
+    console.log(req.params.id);
     
+    for (let i = 0; i < notes.length; i++) {
+      
+      //if notes at i dot id === req.params.id console.log notes[i]
+      if (notes[i].id === req.params.id) {
+        console.log(notes[i]);
+        notes[i] = {};
+      }
+    }
+
+    //find id
+    //console.log note
+    //
+
     //return any type of success message
   });
   
 };
+
+//array modification
