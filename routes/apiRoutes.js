@@ -1,5 +1,5 @@
 var notes = require("../db/db.json");
-var fs = require("fs");
+// var fs = require("fs");
 
 module.exports = function(app) {
 
@@ -22,8 +22,8 @@ module.exports = function(app) {
     for (let i = 0; i < notes.length; i++) {
       
       if (notes[i].id === req.params.id) {
-        console.log(notes[i]);
         notes[i] = "";
+        // notes.splice(i, 1);
       }
     }
   });
