@@ -1,5 +1,4 @@
 var notes = require("../db/db.json");
-// var fs = require("fs");
 
 module.exports = function(app) {
 
@@ -10,7 +9,7 @@ module.exports = function(app) {
   app.post("/api/notes", function(req, res) {
     var newNote = req.body;
 
-    newNote.id = Date.now();
+    newNote.id = Date.now().toString();
 
     notes.push(newNote);
 
@@ -18,14 +17,12 @@ module.exports = function(app) {
   });
 
   app.delete("/api/notes/:id", function(req, res) {
-    
+
     for (let i = 0; i < notes.length; i++) {
       
       if (notes[i].id === req.params.id) {
         notes[i] = "";
-        // notes.splice(i, 1);
       }
     }
   });
-  
 };
