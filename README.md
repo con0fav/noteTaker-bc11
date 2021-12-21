@@ -8,6 +8,9 @@ No installation required. Navigate to the app via [Heroku](https://safe-mesa-308
 
 Click the "Get Started" button to navigate to the notes page. From there, a new not cant be written by clicking the pencil icon in the upper right corner. After entering a note title and the note contents, click the floppy disk icon next to the pencil to save. The red trash can deletes a note.
 
+## Future development
+Fix database issues, make UI more appealing, add export options (to .txt and other formats), add markdown or rich text editor.
+
 ## Technologies
 
 This app was built using Javascript and a Node Express server.
